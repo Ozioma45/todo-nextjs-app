@@ -23,3 +23,11 @@ export async function POST(request) {
 
   return NextResponse.json({ msg: "Todo Created" });
 }
+
+export async function DELETE(request) {
+  const mongoid = await request.nextUrl.searchParams.get("mongoid");
+
+  await TodoModel.findByIdAndDelete(mongoid);
+
+  return NextResponse.json({ msg: "Todo Deleted" });
+}

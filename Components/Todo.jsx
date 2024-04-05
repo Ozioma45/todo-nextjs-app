@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ({ id, title, description, mongoid, complete }) => {
+const Todo = ({ id, title, description, mongoid, complete, deleteTodo }) => {
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
       <th
@@ -12,7 +12,11 @@ const Todo = ({ id, title, description, mongoid, complete }) => {
       <td className="px-6 py-4">{description}</td>
       <td className="px-6 py-4">{complete ? "Completed" : "Pending"}</td>
       <td className="px-6 py-4 flex gap-1">
-        <button className="py-2 px-4 bg-red-500 text-white">Delete</button>
+        <button
+          onClick={() => deleteTodo(mongoid)}
+          className="py-2 px-4 bg-red-500 text-white">
+          Delete
+        </button>
         <button className="py-2 px-4 bg-green-500 text-white">Done</button>
       </td>
     </tr>
