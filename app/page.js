@@ -28,6 +28,20 @@ export default function Home() {
     fetchTodos();
   };
 
+  const completeTodo = async (Id) => {
+    const response = await axios.put(
+      "/api",
+      {},
+      {
+        params: {
+          mongoid: Id,
+        },
+      }
+    );
+    toast.success(response.data.msg);
+    fetchTodos();
+  };
+
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -114,6 +128,7 @@ export default function Home() {
                   complete={item.isCompleted}
                   mongoid={item._id}
                   deleteTodo={deleteTodo}
+                  completeTodo={completeTodo}
                 />
               );
             })}
